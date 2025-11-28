@@ -1,448 +1,152 @@
-/* --- CSS Sıfırlama ve Karanlık Tema Ayarları --- */
+/* --- GENEL AYARLAR (RESET) --- */
 * {
-	html {
-    scroll-behavior: smooth;
-}
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
+    box-sizing: border-box; /* Kutuların boyutunu taşmasını engeller */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    body {
-    /* Eski font satırını sil ve bunu yapıştır: */
-    font-family: 'Poppins', sans-serif; 
-    
-    /* Diğer ayarların aynen kalsın */
-    background-color: #000;
+    background-color: #f4f4f4; /* Sağ tarafın açık zemin rengi */
+    color: #333; /* Genel yazı rengi (Antrasit) */
+    line-height: 1.6; /* Satır aralarını biraz açarak okumayı kolaylaştırır */
+}
+
+/* --- ANA DÜZEN (SPLIT SCREEN) --- */
+.container {
+    display: flex; /* Ekranı yan yana ikiye böler (Flexbox) */
+    min-height: 100vh; /* Ekranın tamamını kaplamasını garanti eder */
+}
+
+/* --- SOL TARAF (SABİT MENÜ - SIDEBAR) --- */
+.sidebar {
+    width: 35%; /* Ekranın %35'ini kaplar */
+    background-color: #681818; /* SEÇTİĞİN BORDO RENK */
     color: #fff;
-    /* ... */
-}
-    background-color: #000; /* Siyah Arka Plan */
-    color: #fff; /* Beyaz Metin */
-    line-height: 1.6;
-    overflow-x: hidden; /* Yatay kaydırmayı engelle */
-    position: relative; /* Arka plan için gerekli */
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.3s; 
-}
-
-/* --- ANİME ARKA PLAN GÖRSELİ --- */
-.background-image {
-    position: fixed; /* Ekranın kaydırma çubuğundan etkilenmeden sabit kalır */
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-image: url('anime-girl.jpg'); /* Resminizin yolu */
-    background-size: cover; /* Resmi tüm alanı kaplayacak şekilde boyutlandır */
-    background-position: center; /* Resmi ortala */
-    background-repeat: no-repeat;
-    opacity: 0.6; /* Resmi daha soluk ve arka planda tutmak için şeffaflık */
-    z-index: -1; /* İçeriğin arkasında kalmasını sağlar */
-    transition: opacity 1s ease-in-out; /* Görselin yumuşak geçişi */
-}
-
-
-/* --- SABİT BAŞLIK VE NAVİGASYON --- */
-.page-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 50px;
-    z-index: 100; 
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0)); /* Üst kısımda hafif degrade */
-}
-
-.logo {
-    font-size: 1.4rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-.nav-links a {
-    margin-left: 40px;
-    font-size: 0.95rem;
-    position: relative;
-    padding-bottom: 5px;
-}
-
-.nav-links a::after { /* Navigasyon linklerinin alt çizgisi */
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background-color: #007bff; /* Vurgu rengi */
-    left: 0;
-    bottom: 0;
-    transition: width 0.3s ease-out;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-/* --- ANA İÇERİK VE FULL EKRAN DÜZENİ --- */
-.main-container {
-    /* Tüm içeriğin container'ı */
-}
-
-.full-viewport {
+    flex-direction: column; /* İçindekileri alt alta dizer */
+    align-items: center; /* Yatayda ortalar */
+    justify-content: center; /* Dikeyde ortalar */
+    text-align: center;
+    padding: 40px;
+    
+    /* Sticky: Sayfa kaydırılsa bile burası sabit kalır */
+    position: sticky;
+    top: 0;
     height: 100vh; 
-    width: 100vw; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0 80px; /* Kenar boşlukları */
-    position: relative; /* İçerik için üstte */
-    z-index: 1; /* Arka planın üstünde olmalı */
 }
 
-.hero-content h1 {
-    font-size: clamp(2.5rem, 5vw, 4.5rem); /* Responsive başlık boyutu */
-    line-height: 1.2;
-    max-width: 900px;
-}
-
-.subtitle {
-    font-size: clamp(1rem, 2vw, 1.4rem);
-    margin-top: 25px;
-    color: #bbb;
-    max-width: 700px;
-}
-
-/* --- GENEL BÖLÜM BAŞLIKLARI VE DÜZENİ --- */
-.section-title {
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    margin-bottom: 60px;
-    color: #fff;
-    text-align: left;
-}
-
-/* --- PROJE KARTLARI BÖLÜMÜ --- */
-./* --- PROJELER BÖLÜMÜ (GÜNCELLENDİ) --- */
-.work-section {
-    padding: 100px 80px;
-    /* Arka planı tamamen şeffaf yapıyoruz ki anime görseli net görünsün */
-    background-color: transparent; 
-    z-index: 1;
-    position: relative;
-}
-
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Responsive grid */
-    gap: 50px;
-}
-
-./* --- PROJE KARTI (BUZLU CAM EFEKTİ) --- */
-.project-card {
-    display: block;
-    /* Kartın arka planı: Beyazın çok şeffaf hali (%5 görünürlük) */
-    background: rgba(255, 255, 255, 0.05); 
-    
-    /* BUZLU CAM SİHRİ: Arkadaki görseli bulanıklaştırır */
-    backdrop-filter: blur(10px); 
-    -webkit-backdrop-filter: blur(10px); /* Safari tarayıcılar için */
-    
-    /* İncecik parlak bir kenarlık */
-    border: 1px solid rgba(255, 255, 255, 0.1); 
-    border-radius: 20px; /* Köşeleri yuvarlat */
-    overflow: hidden;
-    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s;
-}
-
-/* Üzerine gelince (Hover) */
-.project-card:hover {
-    transform: translateY(-10px); /* Yukarı doğru kayma */
-    /* Kenarlığı parlat */
-    border-color: rgba(255, 255, 255, 0.5); 
-    /* Arkasına gölge ekle */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-}
-
-.card-image {
-    width: 100%;
-    height: 250px;
-    background-color: #2a2a2a; /* Resim yoksa yer tutucu renk */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #777;
-    font-size: 1.2rem;
-    transition: transform 0.4s ease-out;
-    /* Buraya isterseniz bir placeholder görsel ekleyebilirsiniz */
-    background-image: url('https://via.placeholder.com/400x250/333/eee?text=Proje+Gorseli'); /* Geçici görsel */
-    background-size: cover;
-    background-position: center;
-}
-
-.project-card:hover .card-image {
-    transform: scale(1.05); /* Resim üzerinde hafif büyütme */
-}
-
-.card-info {
-    padding: 30px;
-}
-
-.card-info h3 {
-    font-size: 1.6rem;
-    margin-bottom: 10px;
-}
-
-.card-info p {
-    font-size: 0.95rem;
-    color: #aaa;
-}
-
-/* --- HAKKIMDA BÖLÜMÜ --- */
-.about-section {
-    background-color: rgba(0,0,0,0.7); /* Arka planı biraz daha belirginleştirir */
-    padding: 100px 80px;
-    z-index: 1;
-    position: relative;
-    text-align: center;
-    align-items: center;
-}
-
-.about-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.about-content p {
-    font-size: 1.1rem;
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Tam yuvarlak resim */
+    object-fit: cover; /* Resmin oranını bozmadan kırpar */
+    border: 4px solid rgba(255,255,255,0.2);
     margin-bottom: 20px;
-    color: #ccc;
+    background-color: #ddd;
 }
 
-
-/* --- İLETİŞİM BÖLÜMÜ --- */
-.contact-section {
-    padding: 100px 80px;
-    min-height: 50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: rgba(0,0,0,0.8);
-    z-index: 1;
-    position: relative;
+.sidebar h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: 700;
 }
 
-.contact-section p {
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-    color: #ccc;
+.sidebar p {
+    font-weight: 300;
+    opacity: 0.9;
+    margin-bottom: 30px;
 }
 
-.contact-button {
-    background-color: #007bff; /* Vurgu rengi */
+/* Sosyal Medya İkonları */
+.social-links a {
     color: white;
-    padding: 15px 30px;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-    transition: background-color 0.3s, transform 0.3s;
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: 0.3s; /* Animasyon süresi */
 }
 
-./* --- İLETİŞİM BÖLÜMÜ (GÜNCELLENDİ) --- */
-.contact-section {
-    padding: 120px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background: transparent; /* Arka plan yok */
-    z-index: 1;
-    position: relative;
+.social-links a:hover {
+    color: #ddd;
+    transform: translateY(-3px); /* Üzerine gelince yukarı zıplar */
 }
 
-/* İletişim Butonu Tasarımı */
-.contact-button {
+/* --- SAĞ TARAF (İÇERİK - MAIN CONTENT) --- */
+.main-content {
+    width: 65%; /* Geri kalan %65'lik alan */
+    padding: 60px 80px;
+}
+
+section {
+    margin-bottom: 60px; /* Bölümler arası boşluk */
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #681818; /* Başlıklarda bordo vurgusu */
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd; /* Alt çizgi */
+    padding-bottom: 10px;
     display: inline-block;
-    margin-top: 40px;
-    padding: 15px 50px;
-    
-    /* Zıtlık yaratmak için Beyaz Buton */
-    background-color: #ffffff; 
-    color: #000000; /* Siyah Yazı */
-    
-    font-size: 1.1rem;
-    font-weight: 700; /* Kalın yazı */
-    border-radius: 50px; /* Tam yuvarlak kenarlar */
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Hafif parlama */
-    transition: all 0.3s ease;
 }
 
-/* Butonun üzerine gelince */
-.contact-button:hover {
-    transform: scale(1.05); /* Biraz büyüsün */
-    box-shadow: 0 0 40px rgba(255, 255, 255, 0.5); /* Parlama artsın */
-    background-color: #f0f0f0;
+/* --- PROJE KARTLARI (GRID SİSTEMİ) --- */
+.projects-grid {
+    display: grid;
+    /* Responsive Grid: Ekran küçülünce otomatik alt satıra geçer */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 20px;
 }
 
-
-/* --- FOOTER (GÜNCELLENDİ) --- */
-.page-footer {
-    padding: 40px 20px;
-    text-align: center;
-    
-    /* En altta koyu bir cam şerit */
-    background: rgba(0, 0, 0, 0.8); 
-    backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Üstüne ince çizgi */
-    
-    z-index: 10;
-    position: relative;
-}
-
-.page-footer p {
-    font-size: 0.9rem;
-    color: #888; /* Soluk gri yazı */
-    letter-spacing: 1px;
-}
-
-/* --- Responsive Ayarlamalar --- */
-@media (max-width: 768px) {
-    .page-header {
-        padding: 15px 20px;
-    }
-
-    .nav-links {
-        display: none; /* Mobil için menüyü gizleyebiliriz veya hamburger menü eklenebilir */
-    }
-
-    .hero-content {
-        padding: 0 20px;
-    }
-
-    .hero-content h1 {
-        font-size: clamp(2rem, 7vw, 3.5rem);
-    }
-
-    .subtitle {
-        font-size: clamp(0.9rem, 3vw, 1.2rem);
-    }
-
-    .work-section, .about-section, .contact-section {
-        padding: 80px 20px;
-    }
-
-    .project-grid {
-        grid-template-columns: 1fr; /* Mobil için tek sütun */
-    }
-
-    .section-title {
-        font-size: clamp(1.8rem, 6vw, 2.8rem);
-        text-align: center;
-        margin-bottom: 40px;
-    }
-}
-
-@media (max-width: 480px) {
-    .page-header {
-        justify-content: center; /* Logo ortalansın */
-    }
-    .logo {
-        font-size: 1.2rem;
-    }
-    .hero-content h1 {
-        font-size: clamp(1.8rem, 8vw, 3rem);
-    }
-    .subtitle {
-        font-size: clamp(0.8rem, 4vw, 1rem);
-    }
-	
-}
-/* --- HERO BUTONU --- */
-.hero-button {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 12px 35px;
-    border: 1px solid rgba(255, 255, 255, 0.5); /* İnce beyaz çerçeve */
-    border-radius: 30px; /* Yuvarlak kenarlar */
-    color: white;
-    font-size: 1rem;
-    text-decoration: none; /* Alt çizgiyi kaldırır */
-    letter-spacing: 1px;
-    background: rgba(0, 0, 0, 0.3); /* Yarı saydam arka plan */
-    backdrop-filter: blur(5px); /* Hafif buzlu cam etkisi */
-    transition: all 0.3s ease; /* Yumuşak geçiş */
-}
-
-/* Üzerine gelince (Hover) yapılacaklar */
-.hero-button:hover {
+.project-card {
     background: white;
-    color: black;
-    transform: translateY(-3px); /* Hafif yukarı zıplama */
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); /* Parlama */
-}
-/* Başlıkların daha estetik durması için */
-h1, h2, h3, .logo {
-    letter-spacing: -0.5px; /* Harfleri çok hafif birbirine yaklaştırır (Modern stil) */
-}
-
-/* Alt başlık ve butonlar için */
-.subtitle, .hero-button, .nav-links a {
-    letter-spacing: 0.5px; /* Okunurluğu artırmak için hafif açar */
-
-
-
-}
-/* --- İLETİŞİM LİNKLERİ (Instagram) --- */
-.contact-links-container {
-    display: flex;
-    justify-content: center; /* Ortala */
-    gap: 30px; /* Linkler arasında boşluk bırak */
-    margin: 30px 0; /* Üstten ve alttan boşluk */
-    flex-wrap: wrap; /* Mobilde sığmazsa alt satıra geçsin */
-}
-
-.contact-link-item {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* İkon ile yazı arasındaki boşluk */
-    color: #cccccc; /* Gri yazı rengi */
-    font-size: 1.1rem;
-    text-decoration: none;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Hafif gölge */
     transition: all 0.3s ease;
-    padding: 10px 20px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.05); /* Çok hafif arka plan */
-    border: 1px solid rgba(255, 255, 255, 0.1); /* İnce çerçeve */
+    border-left: 4px solid transparent; /* Sol kenar çizgisi için hazırlık */
 }
 
-.contact-link-item i {
-    font-size: 1.3rem; /* İkon boyutu */
+/* Karta gelince oluşan efekt */
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-left: 4px solid #681818; /* Sol tarafta bordo çizgi belirir */
 }
 
-/* Üzerine gelince (Hover) */
-.contact-link-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    transform: translateY(-3px); /* Hafif yukarı zıplama */
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+.project-card h3 {
+    margin-bottom: 10px;
+    color: #222;
 }
 
-/* Mobilde alt alta dursunlar istersen bu kısmı kullanabilirsin */
-@media (max-width: 600px) {
-    .contact-links-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
+.tags span {
+    display: inline-block;
+    background: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-right: 5px;
+    margin-top: 15px;
+    color: #555;
+}
+
+/* --- MOBİL UYUMLULUK (RESPONSIVE) --- */
+/* 768px'den küçük ekranlar (Tablet ve Telefon) için kurallar */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Yan yana yerine alt alta */
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto; /* Yüksekliği otomatiğe çek */
+        position: relative; /* Sabitlemeyi kaldır */
+        padding: 40px 20px;
+    }
+
+    .main-content {
+        width: 100%;
+        padding: 40px 20px;
     }
 }

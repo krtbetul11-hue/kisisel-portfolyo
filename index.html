@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betül Kurt | Portfolyo</Bilgisayar Programcılığı>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- GENEL AYARLAR (RESET) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Sistem fontları temizdir */
+        }
+
+        body {
+            background-color: #f4f4f4; /* Sağ tarafın açık zemin rengi */
+            color: #333; /* Genel yazı rengi (Antrasit) */
+        }
+
+        /* --- ANA DÜZEN (SPLIT SCREEN) --- */
+        .container {
+            display: flex; /* Ekranı yan yana ikiye böler */
+            min-height: 100vh;
+        }
+
+        /* --- SOL TARAF (SABİT MENÜ) --- */
+        .sidebar {
+            width: 35%; /* Ekranın %35'ini kaplar */
+            background-color: #681818; /* SEÇTİĞİN BORDO RENK */
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+            
+            /* Sticky özelliği: Sayfa kaydırılsa bile burası sabit kalır */
+            position: sticky;
+            top: 0;
+            height: 100vh; 
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* Yuvarlak resim */
+            object-fit: cover;
+            border: 4px solid rgba(255,255,255,0.2);
+            margin-bottom: 20px;
+            background-color: #ddd; /* Resim yokken gri görünür */
+        }
+
+        .sidebar h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .sidebar p {
+            font-weight: 300;
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ddd;
+            transform: translateY(-3px); /* Üzerine gelince hafif zıplama */
+        }
+
+        /* --- SAĞ TARAF (İÇERİK) --- */
+        .main-content {
+            width: 65%; /* Geri kalan %65'lik alan */
+            padding: 60px 80px;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #681818; /* Başlıklarda da bordo vurgusu */
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        /* --- PROJE KARTLARI (GRID SİSTEMİ) --- */
+        .projects-grid {
+            display: grid;
+            /* Ekran boyutuna göre otomatik sığan sütunlar */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 20px;
+        }
+
+        .project-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .tags span {
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        /* --- MOBİL UYUMLULUK (RESPONSIVE) --- */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Yan yana değil alt alta olsun */
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto; /* Sabit yüksekliği kaldır */
+                position: relative; /* Sticky özelliğini kaldır */
+                padding: 40px 20px;
+            }
+
+            .main-content {
+                width: 100%;
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <aside class="sidebar">
+            <img src="https://via.placeholder.com/150" alt="Profil Fotoğrafı" class="profile-img">
+            
+            <h1>Betül Kurt</h1>
+            <p>Bilgisayar Programcılığı Öğrencisi<br>Web Geliştirici Adayı</p>
+            
+            <div class="social-links">
+                <a href="#"><i class="https://www.instagram.com/krtbetull/"></i></a>
+                <a href="#"><i class="https://www.linkedin.com/in/bet%C3%BCl-kurt-141a13308/"></i></a>
+                <a href="#"><i class="https://github.com/krtbetul11-hue"></i></a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <section id="about">
+                <h2>Hakkımda</h2>
+                <p>Merhaba, Ben Betül Burdur Mehmet Akif Üniversitesi'nde Bilgisayar Programcılığı okuyorum. Minimalist tasarımlar ve temiz kod yazımı üzerine kendimi geliştiriyorum. HTML, CSS ve C# ile projeler üretiyorum.</p>
+            </section>
+
+            <section id="projects">
+                <h2>Projeler</h2>
+                <div class="projects-grid">
+                    
+                    <article class="project-card">
+                        <h3>Kişisel Blog</h3>
+                        <p>WordPress kullanarak oluşturduğum kişisel blog sitesi.</p>
+                        <div class="tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>PHP</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Hesap Makinesi</h3>
+                        <p>C# Form kullanarak geliştirdiğim basit hesap makinesi uygulaması.</p>
+                        <div class="tags">
+                            <span>C#</span>
+                            <span>.NET</span>
+                        </div>
+                    </article>
+
+                     <article class="project-card">
+                        <h3>Öğrenci Otomasyonu</h3>
+                        <p>Vize ve final notlarını hesaplayan konsol uygulaması.</p>
+                        <div class="tags">
+                            <span>C#</span>
+                            <span>Console</span>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2>İletişim</h2>
+                <p>Projeleriniz veya staj olanakları için benimle iletişime geçebilirsiniz.</p>
+                <p style="margin-top: 10px;"><strong>Email:</strong>krtbetul11@gmail.com</p>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>
