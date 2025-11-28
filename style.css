@@ -36,14 +36,22 @@ body {
     height: 100vh; 
 }
 
-.profile-img {
+.profile-avatar {
     width: 150px;
     height: 150px;
-    border-radius: 50%; /* Tam yuvarlak resim */
-    object-fit: cover; /* Resmin oranını bozmadan kırpar */
-    border: 4px solid rgba(255,255,255,0.2);
+    background-color: #4a1010; /* Arka plandan biraz daha koyu bir bordo */
+    color: #ffffff; /* Yazı rengi */
+    font-size: 3rem; /* Harflerin büyüklüğü */
+    font-weight: bold;
+    border-radius: 50%; /* Tam yuvarlak yapar */
+    
+    /* Harfleri tam ortaya hizalamak için: */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
     margin-bottom: 20px;
-    background-color: #ddd;
+    border: 4px solid rgba(255,255,255,0.2); /* Etrafındaki hafif çizgi */
 }
 
 .sidebar h1 {
@@ -149,4 +157,5 @@ h2 {
         width: 100%;
         padding: 40px 20px;
     }
+
 }
